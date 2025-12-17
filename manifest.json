@@ -1,0 +1,31 @@
+{
+    "name": "VO2Max Lyon",
+    "short_name": "VO2Max",
+    "description": "Salle de musculation et cardio premium à Lyon depuis 1998",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0A0A0F",
+    "theme_color": "#E53935",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "./assets/images/logo.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./assets/images/logo.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "fitness",
+        "sports",
+        "health"
+    ],
+    "lang": "fr",
+    "dir": "ltr"
+}

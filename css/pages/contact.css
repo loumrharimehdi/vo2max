@@ -1,0 +1,295 @@
+/* =====================================================
+   VO2MAX LYON - CONTACT PAGE STYLES
+   ===================================================== */
+
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
+}
+
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CONTACT INFO ===== */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.contact-info__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-2);
+}
+
+.contact-info__subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+}
+
+.contact-info__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+}
+
+.contact-item:hover {
+    border-color: var(--color-border-accent);
+}
+
+.contact-item__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-subtle);
+    border-radius: var(--radius-lg);
+    color: var(--color-accent);
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+.contact-item__content {
+    flex: 1;
+}
+
+.contact-item__label {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-1);
+}
+
+.contact-item__value {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+}
+
+.contact-item__value a {
+    color: var(--color-text-primary);
+}
+
+.contact-item__value a:hover {
+    color: var(--color-accent);
+}
+
+/* ===== HOURS TABLE ===== */
+.hours-table {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.hours-table__title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.hours-table__title-icon {
+    color: var(--color-accent);
+}
+
+.hours-table__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+}
+
+.hours-row__day {
+    color: var(--color-text-secondary);
+}
+
+.hours-row__time {
+    color: var(--color-text-primary);
+    font-weight: var(--font-medium);
+}
+
+.hours-row--highlight {
+    color: var(--color-accent);
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-10);
+    backdrop-filter: var(--blur-md);
+}
+
+.contact-form__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.contact-form__subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+}
+
+.contact-form__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+    .contact-form__row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-form__submit {
+    width: 100%;
+    margin-top: var(--space-4);
+}
+
+.contact-form__success {
+    text-align: center;
+    padding: var(--space-8);
+}
+
+.contact-form__success-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-success);
+    border-radius: var(--radius-full);
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-2xl);
+    color: white;
+}
+
+.contact-form__success-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+}
+
+.contact-form__success-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+/* ===== MAP SECTION ===== */
+.map-section {
+    padding: var(--space-16) 0;
+    background: var(--color-bg-secondary);
+}
+
+.map-section__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-8);
+    text-align: center;
+}
+
+.map-container {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    height: 400px;
+    border: 1px solid var(--color-glass-border);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(100%) invert(92%) contrast(83%);
+}
+
+.map-container:hover iframe {
+    filter: grayscale(50%) invert(92%) contrast(90%);
+}
+
+.map-directions {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-6);
+}
+
+/* ===== ACCESS SECTION ===== */
+.access-section {
+    padding: var(--space-16) 0;
+}
+
+.access-section__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .access-section__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.access-card {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.access-card:hover {
+    border-color: var(--color-border-accent);
+}
+
+.access-card__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-subtle);
+    border-radius: var(--radius-lg);
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+}
+
+.access-card__title {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-2);
+}
+
+.access-card__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
