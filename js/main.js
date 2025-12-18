@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallax();
     initDirectionsAnimation();
     initStickyCTA();
+    initCustomCursor();
 });
 
 /* ===== Page Loader ===== */
@@ -535,4 +536,71 @@ function animateCounterEnhanced(element, target, duration = 2000) {
     }
 
     requestAnimationFrame(update);
+}
+
+/* ===== Custom Cursor Effect ===== */
+function initCustomCursor() {
+    // Only on desktop
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    // Create cursor elements
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
+
+    const cursorFollower = document.createElement('div');
+    cursorFollower.className = 'cursor-follower';
+    document.body.appendChild(cursorFollower);
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animate() {
+        // Cursor follows immediately
+        cursorX += (mouseX - cursorX) * 0.2;
+        cursorY += (mouseY - cursorY) * 0.2;
+        cursor.style.left = cursorX - 6 + 'px';
+        cursor.style.top = cursorY - 6 + 'px';
+
+        // Follower has delay
+        followerX += (mouseX - followerX) * 0.1;
+        followerY += (mouseY - followerY) * 0.1;
+        cursorFollower.style.left = followerX - 20 + 'px';
+        cursorFollower.style.top = followerY - 20 + 'px';
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Expand on hoverable elements
+    const hoverables = document.querySelectorAll('a, button, .btn, .service-card, .pricing-card, .google-review-card, .contact__item');
+
+    hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('expanded');
+            cursorFollower.classList.add('expanded');
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('expanded');
+            cursorFollower.classList.remove('expanded');
+        });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        cursorFollower.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        cursorFollower.style.opacity = '0.5';
+    });
 }
