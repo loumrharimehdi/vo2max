@@ -75,10 +75,11 @@
 
       <div class="navbar__nav">
         <a href="#hero" class="navbar__link">Accueil</a>
-        <a href="#services" class="navbar__link">Services</a>
-        <a href="#about" class="navbar__link">À Propos</a>
-        <a href="#pricing" class="navbar__link">Tarifs</a>
-        <a href="#contact" class="navbar__link">Contact</a>
+        <a href="#salle" class="navbar__link">La Salle</a>
+        <a href="#avis" class="navbar__link">Avis</a>
+        <a href="#tarifs" class="navbar__link">Tarifs</a>
+        <a href="#faq" class="navbar__link">FAQ</a>
+        <a href="#acces" class="navbar__link">Accès</a>
       </div>
 
       <button class="navbar__toggle" aria-label="Menu">
@@ -128,7 +129,7 @@
       </p>
 
       <div class="hero__ctas reveal">
-        <a href="#contact" class="btn btn--primary btn--lg hero__cta-main">
+        <a href="#acces" class="btn btn--primary btn--lg hero__cta-main">
           <span>🏋️ Essai Gratuit</span>
         </a>
         <a href="tel:0437289014" class="btn btn--outline btn--lg">
@@ -221,7 +222,7 @@
   </div>
 
   <!-- Services Section -->
-  <section class="services section" id="services">
+  <section class="services section" id="salle">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">💪 Nos Activités</span>
@@ -366,7 +367,8 @@
     </div>
   </div>
 
-  <section class="about section" id="about">
+  <!-- About content now integrated in La Salle section above, this section becomes part of the flow -->
+  <section class="about section">
     <div class="container">
       <!-- Section Header -->
       <div class="section-header reveal">
@@ -472,7 +474,7 @@
   </div>
 
   <!-- Pricing Section -->
-  <section class="pricing section" id="pricing">
+  <section class="pricing section" id="tarifs">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">💰 Nos Formules</span>
@@ -494,7 +496,7 @@
             <li>Découverte des équipements</li>
             <li>Sans engagement</li>
           </ul>
-          <a href="#contact" class="btn btn--outline btn--full">Réserver</a>
+          <a href="#acces" class="btn btn--outline btn--full">Réserver</a>
         </div>
 
         <div class="pricing-card pricing-card--featured reveal">
@@ -513,7 +515,7 @@
             <li>Cross-training</li>
             <li>Sans engagement</li>
           </ul>
-          <a href="#contact" class="btn btn--primary btn--full">Choisir</a>
+          <a href="#acces" class="btn btn--primary btn--full">Choisir</a>
         </div>
 
         <div class="pricing-card reveal">
@@ -531,7 +533,7 @@
             <li>Suivi coach dédié</li>
             <li>Accès illimité</li>
           </ul>
-          <a href="#contact" class="btn btn--outline btn--full">Réserver</a>
+          <a href="#acces" class="btn btn--outline btn--full">Réserver</a>
         </div>
       </div>
     </div>
@@ -556,7 +558,7 @@
   </div>
 
   <!-- Testimonials Section - Vrais Avis Google -->
-  <section class="testimonials section" id="testimonials">
+  <section class="testimonials section" id="avis">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">⭐ Avis Google</span>
@@ -933,8 +935,89 @@
     </div>
   </div>
 
+  <!-- FAQ Section -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">❓ Questions Fréquentes</span>
+        <h2 class="section-title">
+          On répond à<br>
+          <span class="text-gradient">tes questions</span>
+        </h2>
+      </div>
+
+      <div class="faq__grid">
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>🏋️ C'est quoi l'ambiance à VO2Max ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>Ambiance Old School et familiale ! Ici tout le monde se dit bonjour. Pas de chaîne impersonnelle, mais
+              une vraie communauté de passionnés depuis 1998. Tu te sentiras vite chez toi.</p>
+          </div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>💪 Faut-il un niveau minimum pour s'inscrire ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>Absolument pas ! On accueille tous les niveaux, du débutant complet au compétiteur. Nos coachs sont là
+              pour t'accompagner et te faire progresser à ton rythme.</p>
+          </div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>📝 Comment fonctionne l'essai gratuit ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>Simple ! Tu passes nous voir ou tu nous appelles. On te fait visiter la salle, tu fais une séance
+              découverte gratuite et sans engagement. Si ça te plaît, tu t'inscris quand tu veux !</p>
+          </div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>⏰ Quels sont vos horaires d'ouverture ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>On est ouverts 7j/7 : Lundi-Vendredi de 7h à 22h, Samedi de 7h à 17h, et Dimanche de 7h à 14h. Tu
+              trouveras toujours un créneau qui te convient !</p>
+          </div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>💳 Y a-t-il un engagement ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>Non, c'est sans engagement ! Tu peux arrêter quand tu veux. On croit en notre salle, pas besoin de te
+              forcer à rester si ça ne te convient pas (mais tu vas adorer 😉).</p>
+          </div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__question">
+            <span>🚿 Y a-t-il des vestiaires et douches ?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>Oui ! Vestiaires hommes et femmes avec casiers et douches. Tu peux venir avant ou après le boulot en
+              toute tranquillité.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section class="contact section" id="contact">
+  <section class="contact section" id="acces">
     <div class="container">
       <div class="contact__grid">
         <div class="contact__info reveal">
@@ -1106,10 +1189,11 @@
           <div class="footer__column">
             <h4>Navigation</h4>
             <a href="#hero">Accueil</a>
-            <a href="#services">Services</a>
-            <a href="#pricing">Tarifs</a>
-            <a href="#about">À Propos</a>
-            <a href="#contact">Contact</a>
+            <a href="#salle">La Salle</a>
+            <a href="#avis">Avis</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#faq">FAQ</a>
+            <a href="#acces">Accès</a>
           </div>
 
           <div class="footer__column">

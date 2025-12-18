@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
     initEquipmentTabs();
     initEquipmentCarousel();
+    initFAQ();
 });
 
 /* ===== Page Loader ===== */
@@ -774,4 +775,27 @@ function initEquipmentCarousel() {
     createDots();
     updateCarousel();
     startAutoPlay();
+}
+
+/* ===== FAQ Accordion ===== */
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq__item');
+
+    if (faqItems.length === 0) return;
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq__question');
+
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
 }
