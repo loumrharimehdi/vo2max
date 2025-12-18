@@ -2475,3 +2475,179 @@ textarea {
         height: 120px;
     }
 }
+
+/* =====================================================
+   MARQUEE BANNER
+   ===================================================== */
+
+.marquee {
+    background: var(--color-accent);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee__content {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee__content span {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 1rem;
+}
+
+.marquee__dot {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== Hero Trust Badges ===== */
+.hero__trust {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.hero__trust span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* ===== Hero CTA Main ===== */
+.hero__cta-main {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    animation: ctaPulse 3s ease-in-out infinite;
+}
+
+/* ===== Hero Title Inline ===== */
+.hero__title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hero__title .word {
+    display: inline-block;
+}
+
+/* =====================================================
+   DIRECTIONS SECTION
+   ===================================================== */
+
+.directions {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.directions__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.directions__subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.directions__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.directions__step {
+    text-align: center;
+}
+
+.directions__step-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.directions__step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-accent);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.directions__step-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+.directions__transport {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.directions__transport-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1.25rem;
+    border-radius: 100px;
+}
+
+.directions__transport-icon {
+    font-size: 1.5rem;
+}
+
+.directions__transport-info {
+    text-align: left;
+}
+
+.directions__transport-type {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.directions__transport-name {
+    color: white;
+    font-weight: 600;
+}
