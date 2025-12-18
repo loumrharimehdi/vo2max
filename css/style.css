@@ -2974,6 +2974,7 @@ textarea {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: btnShine 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes btnShine {
@@ -2990,6 +2991,7 @@ textarea {
 /* Hours grid hover */
 .contact__hour {
     transition: all 0.3s ease;
+    cursor: default;
 }
 
 .contact__hour:hover {
@@ -3001,6 +3003,7 @@ textarea {
 .contact__map {
     position: relative;
     transition: transform 0.4s ease;
+    cursor: pointer;
 }
 
 .contact__map:hover {
@@ -3022,21 +3025,148 @@ textarea {
     transition: opacity 0.3s ease;
     z-index: 10;
     pointer-events: none;
+    white-space: nowrap;
 }
 
 .contact__map:hover::before {
     opacity: 1;
 }
 
-/* Directions transport items hover */
+/* =====================================================
+   ENHANCED FORM ANIMATIONS
+   ===================================================== */
+
+/* Form wrapper glow */
+.contact__form-wrapper {
+    transition: all 0.4s ease;
+}
+
+.contact__form-wrapper:focus-within {
+    border-color: rgba(229, 57, 53, 0.4);
+    box-shadow: 0 0 30px rgba(229, 57, 53, 0.1);
+}
+
+/* Input focus animations */
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(229, 57, 53, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Floating label effect */
+.form-group label {
+    position: absolute;
+    left: 1.25rem;
+    top: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label,
+.form-group textarea:focus+label,
+.form-group textarea:not(:placeholder-shown)+label {
+    top: -0.5rem;
+    left: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    background: var(--color-bg-primary);
+    padding: 0 0.5rem;
+}
+
+/* Submit button hover */
+.contact__form .btn--primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(229, 57, 53, 0.3);
+}
+
+/* Form consent checkbox animation */
+.contact__consent {
+    transition: all 0.3s ease;
+}
+
+.contact__consent:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* =====================================================
+   ENHANCED DIRECTIONS ANIMATIONS
+   ===================================================== */
+
+/* Directions container */
+.directions {
+    transition: all 0.4s ease;
+}
+
+.directions:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Title animation */
+.directions__title {
+    transition: color 0.3s ease;
+}
+
+.directions:hover .directions__title {
+    color: var(--color-accent);
+}
+
+/* Step images hover */
+.directions__step-img {
+    transition: all 0.4s var(--ease-spring);
+}
+
+.directions__step:hover .directions__step-img {
+    transform: scale(1.05);
+    border-color: var(--color-accent);
+}
+
+/* Step number animation on hover */
+.directions__step:hover .directions__step-number {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(229, 57, 53, 0.5);
+}
+
+/* Step text animation */
+.directions__step-text {
+    transition: color 0.3s ease;
+}
+
+.directions__step:hover .directions__step-text {
+    color: white;
+}
+
+/* Transport items enhanced */
 .directions__transport-item {
     transition: all 0.3s var(--ease-spring);
+    cursor: default;
 }
 
 .directions__transport-item:hover {
     transform: translateY(-5px) scale(1.05);
     background: rgba(229, 57, 53, 0.15);
     border: 1px solid rgba(229, 57, 53, 0.3);
+}
+
+.directions__transport-icon {
+    transition: transform 0.3s ease;
+}
+
+.directions__transport-item:hover .directions__transport-icon {
+    transform: scale(1.2);
 }
 
 /* Form success confetti placeholder */
@@ -3048,6 +3178,7 @@ textarea {
     font-size: 4rem;
     z-index: 99999;
     animation: successPop 0.5s ease-out;
+    pointer-events: none;
 }
 
 @keyframes successPop {
