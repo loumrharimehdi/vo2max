@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyCTA();
     initCustomCursor();
     initEquipmentTabs();
+    initEquipmentCarousel();
 });
 
 /* ===== Page Loader ===== */
@@ -631,4 +632,146 @@ function initEquipmentTabs() {
             });
         });
     });
+}
+
+/* ===== Equipment Carousel ===== */
+function initEquipmentCarousel() {
+    const carousel = document.querySelector('.equipment-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.equipment-carousel__track');
+    const slides = carousel.querySelectorAll('.equipment-carousel__slide');
+    const prevBtn = carousel.querySelector('.equipment-carousel__btn--prev');
+    const nextBtn = carousel.querySelector('.equipment-carousel__btn--next');
+    const dotsContainer = carousel.querySelector('.equipment-carousel__dots');
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let slidesPerView = getSlidesPerView();
+    let maxIndex = Math.max(0, slides.length - slidesPerView);
+
+    // Create dots
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const numDots = maxIndex + 1;
+        for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'equipment-carousel__dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    // Get slides per view based on viewport
+    function getSlidesPerView() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+    }
+
+    // Update carousel position
+    function updateCarousel() {
+        const slideWidth = slides[0].offsetWidth + 16; // 16px = gap
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+        // Update dots
+        const dots = dotsContainer.querySelectorAll('.equipment-carousel__dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+
+        // Update buttons
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    // Navigate to specific slide
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        updateCarousel();
+    }
+
+    // Event listeners
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && currentIndex < maxIndex) {
+                currentIndex++;
+            } else if (diff < 0 && currentIndex > 0) {
+                currentIndex--;
+            }
+            updateCarousel();
+        }
+    }
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        slidesPerView = getSlidesPerView();
+        maxIndex = Math.max(0, slides.length - slidesPerView);
+        currentIndex = Math.min(currentIndex, maxIndex);
+        createDots();
+        updateCarousel();
+    });
+
+    // Auto-play (optional)
+    let autoPlayInterval;
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }, 5000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Initialize
+    createDots();
+    updateCarousel();
+    startAutoPlay();
 }
