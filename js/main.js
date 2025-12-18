@@ -1,5 +1,5 @@
 /* =====================================================
-   VO2MAX LYON - MAIN JAVASCRIPT
+   VO2MAX LYON - JAVASCRIPT CONSOLIDÉ
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initBackToTop();
     initMobileMenu();
+    initCounters();
 });
 
 /* ===== Page Loader ===== */
@@ -20,7 +21,7 @@ function initLoader() {
         setTimeout(() => {
             loader.classList.add('hidden');
             document.body.style.overflow = 'visible';
-        }, 800);
+        }, 1000);
     });
 }
 
@@ -29,18 +30,12 @@ function initNavbar() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
-    let lastScroll = 0;
-
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 50) {
+        if (window.pageYOffset > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     });
 }
 
@@ -56,13 +51,21 @@ function initSmoothScroll() {
 
             e.preventDefault();
 
-            const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+            const navbarHeight = 100;
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
 
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
+
+            // Close mobile menu if open
+            const nav = document.querySelector('.navbar__nav');
+            const toggle = document.querySelector('.navbar__toggle');
+            if (nav && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                toggle?.classList.remove('active');
+            }
         });
     });
 }
@@ -70,16 +73,18 @@ function initSmoothScroll() {
 /* ===== Scroll Reveal Animation ===== */
 function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
-
     if (reveals.length === 0) return;
 
     const revealOnScroll = () => {
-        reveals.forEach(element => {
+        reveals.forEach((element, index) => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
 
             if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('revealed');
+                // Add stagger delay
+                setTimeout(() => {
+                    element.classList.add('revealed');
+                }, index * 50);
             }
         });
     };
@@ -114,16 +119,16 @@ function initBackToTop() {
 function initMobileMenu() {
     const toggle = document.querySelector('.navbar__toggle');
     const nav = document.querySelector('.navbar__nav');
-    const overlay = document.createElement('div');
 
     if (!toggle || !nav) return;
 
-    overlay.className = 'mobile-overlay';
+    // Create overlay
+    const overlay = document.createElement('div');
     overlay.style.cssText = `
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 299;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -148,15 +153,6 @@ function initMobileMenu() {
 
     toggle.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
-
-    // Close menu on link click
-    nav.querySelectorAll('.navbar__link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (nav.classList.contains('open')) {
-                toggleMenu();
-            }
-        });
-    });
 }
 
 /* ===== Counter Animation ===== */
@@ -177,10 +173,8 @@ function animateCounter(element, target, duration = 2000) {
     updateCounter();
 }
 
-/* ===== Intersection Observer for Counters ===== */
 function initCounters() {
     const counters = document.querySelectorAll('[data-counter]');
-
     if (counters.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -196,20 +190,26 @@ function initCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
-// Initialize counters
-document.addEventListener('DOMContentLoaded', initCounters);
+/* ===== Form Handling ===== */
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-/* ===== Active Navigation Link ===== */
-function setActiveNavLink() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.navbar__link');
+        const formData = new FormData(this);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const message = formData.get('message');
 
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (currentPath === href || (currentPath === '/' && href === 'index.html')) {
-            link.classList.add('active');
-        }
+        // Create WhatsApp message
+        const whatsappMessage = `Salut ! Je suis ${name}.%0A%0AEmail: ${email}${phone ? '%0ATél: ' + phone : ''}${message ? '%0A%0AMessage: ' + message : ''}%0A%0AJe voudrais des infos sur VO2Max ! 💪`;
+
+        // Redirect to WhatsApp
+        window.open(`https://wa.me/33437289014?text=${whatsappMessage}`, '_blank');
+
+        // Show success message
+        alert('Super ! On t\'a redirigé vers WhatsApp pour finaliser ta demande 🏋️');
+        this.reset();
     });
 }
-
-document.addEventListener('DOMContentLoaded', setActiveNavLink);

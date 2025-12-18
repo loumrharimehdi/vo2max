@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <!-- SEO Meta Tags -->
-  <title>VO2Max Lyon | Salle de Musculation & Cardio Premium depuis 1998</title>
-  <meta name="description" content="VO2Max Lyon : votre salle de musculation et cardio premium depuis 1998. 600m² d'équipements haut de gamme, coachs diplômés. Inscrivez-vous dès maintenant !">
-  <meta name="keywords" content="salle de sport Lyon, musculation Lyon, cardio training, VO2Max, fitness Lyon 7, cross training Lyon">
+  <title>VO2Max Lyon | Ta Salle de Sport Familiale depuis 1998</title>
+  <meta name="description"
+    content="VO2Max Lyon : ta salle de musculation familiale et conviviale depuis 1998. 600m², équipements pro, ambiance motivante. Rejoins-nous !">
+  <meta name="keywords"
+    content="salle de sport Lyon, musculation Lyon, cardio training, VO2Max, fitness Lyon 7, salle familiale Lyon">
   <meta name="author" content="VO2Max Lyon">
   <meta name="robots" content="index, follow">
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="VO2Max Lyon | Salle de Musculation Premium">
-  <meta property="og:description" content="Votre salle de musculation et cardio premium à Lyon depuis 1998. 600m², coachs diplômés, équipements haut de gamme.">
+  <meta property="og:title" content="VO2Max Lyon | Ta Salle de Sport Familiale">
+  <meta property="og:description" content="Ta salle de musculation familiale à Lyon depuis 1998.">
   <meta property="og:url" content="https://vo2max-lyon.com">
-  <meta property="og:image" content="https://vo2max-lyon.com/assets/images/og-image.jpg">
   <meta property="og:locale" content="fr_FR">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VO2Max Lyon | Salle de Sport Premium">
-  <meta name="twitter:description" content="Salle de musculation et cardio premium à Lyon depuis 1998.">
-  
+
   <!-- Theme Color -->
   <meta name="theme-color" content="#E53935">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/images/logo.jpg">
   <link rel="apple-touch-icon" href="./assets/images/logo.jpg">
-  
-  <!-- Manifest -->
   <link rel="manifest" href="./manifest.json">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/pages/home.css">
-  
-  <!-- Preconnect to Google Fonts -->
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Single CSS File -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
+  <!-- Floating Dumbbells Background -->
+  <div class="floating-dumbbells" aria-hidden="true">
+    <span class="floating-dumbbell">🏋️</span>
+    <span class="floating-dumbbell">💪</span>
+    <span class="floating-dumbbell">🏋️‍♂️</span>
+    <span class="floating-dumbbell">🔥</span>
+    <span class="floating-dumbbell">💪</span>
+    <span class="floating-dumbbell">🏋️‍♀️</span>
+    <span class="floating-dumbbell">⚡</span>
+    <span class="floating-dumbbell">🏋️</span>
+    <span class="floating-dumbbell">💪</span>
+    <span class="floating-dumbbell">🔥</span>
+    <span class="floating-dumbbell">🏋️‍♂️</span>
+    <span class="floating-dumbbell">💪</span>
+  </div>
+
   <!-- Page Loader -->
   <div class="loader">
-    <img src="./assets/images/logo.jpg" alt="VO2Max" class="loader__logo">
-    <div class="loader__spinner"></div>
+    <div class="loader__content">
+      <span class="loader__icon">🏋️</span>
+      <span class="loader__text">VO2MAX</span>
+    </div>
   </div>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container navbar__container">
-      <a href="index.html" class="navbar__logo">
-        <img src="./assets/images/logo.jpg" alt="VO2Max Lyon">
-        <span class="navbar__logo-text">VO2<span>Max</span></span>
+      <a href="#hero" class="navbar__logo">
+        <span class="navbar__logo-icon">🏋️</span>
+        <span class="navbar__logo-text">VO2MAX</span>
       </a>
-      
+
       <div class="navbar__nav">
-        <a href="index.html" class="navbar__link active">Accueil</a>
-        <a href="services.html" class="navbar__link">Services</a>
-        <a href="actualites.html" class="navbar__link">Actualités</a>
-        <a href="a-propos.html" class="navbar__link">À Propos</a>
-        <a href="contact.html" class="navbar__link">Contact</a>
-        <a href="contact.html" class="btn btn--primary navbar__cta">S'inscrire</a>
+        <a href="#hero" class="navbar__link">Accueil</a>
+        <a href="#services" class="navbar__link">Services</a>
+        <a href="#about" class="navbar__link">À Propos</a>
+        <a href="#contact" class="navbar__link">Contact</a>
+        <a href="#contact" class="btn btn--primary navbar__cta">Essai Gratuit</a>
       </div>
-      
+
       <button class="navbar__toggle" aria-label="Menu">
         <span></span>
         <span></span>
@@ -76,331 +90,485 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero__background">
-      <img src="./assets/images/gym/dumbbells.jpg" alt="Salle VO2Max Lyon">
-      <div class="hero__overlay"></div>
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__gradient"></div>
     </div>
-    
+
     <div class="hero__content">
-      <span class="hero__label">
-        <span>🏆</span> Depuis 1998 à Lyon
-      </span>
-      
-      <h1 class="hero__title hero-title">
-        Un niveau <span>pro</span>,<br>une salle d'exception.
+      <div class="hero__badge reveal">
+        <span class="hero__badge-icon">🔥</span>
+        <span>Depuis 1998 à Lyon</span>
+      </div>
+
+      <h1 class="hero__title reveal">
+        <span class="word">Ta salle.</span><br>
+        <span class="word text-gradient">Ta famille.</span><br>
+        <span class="word">Ton évolution.</span>
       </h1>
-      
-      <p class="hero__subtitle hero-subtitle">
-        Chez VO2Max Lyon, tu t'entraînes dans un espace 100% musculation et cardio, encadré par une équipe de coachs diplômés, avec du matériel haut de gamme.
+
+      <p class="hero__subtitle reveal">
+        Chez VO2Max, on s'entraîne ensemble, on progresse ensemble.
+        Une ambiance conviviale, des équipements pro, et des coachs qui te poussent à donner le meilleur.
       </p>
-      
-      <div class="hero__ctas hero-cta">
-        <a href="#formules" class="btn btn--primary btn--lg shine">
-          Choisir mon offre
+
+      <div class="hero__ctas reveal">
+        <a href="#contact" class="btn btn--primary btn--lg">
+          <span>Commencer maintenant</span>
+          <span class="btn__arrow">→</span>
         </a>
-        <a href="services.html" class="btn btn--secondary btn--lg">
-          Voir les activités
+        <a href="#services" class="btn btn--outline btn--lg">
+          Découvrir la salle
         </a>
       </div>
-      
-      <div class="hero__stats hero-stats">
+
+      <div class="hero__stats reveal">
         <div class="hero__stat">
-          <div class="hero__stat-value" data-counter="600">0</div>
-          <div class="hero__stat-label">m² d'espace</div>
+          <span class="hero__stat-value" data-counter="600">0</span>
+          <span class="hero__stat-unit">m²</span>
+          <span class="hero__stat-label">d'espace</span>
         </div>
+        <div class="hero__stat-divider"></div>
         <div class="hero__stat">
-          <div class="hero__stat-value" data-counter="25">0</div>
-          <div class="hero__stat-label">ans d'expérience</div>
+          <span class="hero__stat-value" data-counter="25">0</span>
+          <span class="hero__stat-unit">+</span>
+          <span class="hero__stat-label">ans d'expérience</span>
         </div>
+        <div class="hero__stat-divider"></div>
         <div class="hero__stat">
-          <div class="hero__stat-value" data-counter="7">0</div>
-          <div class="hero__stat-label">jours / 7</div>
+          <span class="hero__stat-value">7</span>
+          <span class="hero__stat-unit">j/7</span>
+          <span class="hero__stat-label">ouverts</span>
         </div>
       </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
     </div>
   </section>
 
-  <!-- Activities Section -->
-  <section class="activities section" id="activites">
+  <!-- Barbell Separator -->
+  <div class="section-separator">
+    <div class="barbell-separator">
+      <div class="barbell-separator__weight"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__bar"></div>
+      <span class="barbell-separator__emoji">🏋️</span>
+      <div class="barbell-separator__bar"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__weight"></div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="services section" id="services">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-header__label">💪 Nos Activités</span>
-        <h2 class="section-header__title">Découvrez nos activités</h2>
-        <p class="section-header__subtitle">
-          Un environnement où tout est possible, quel que soit votre style d'entraînement.
-        </p>
+        <span class="section-tag">💪 Nos Activités</span>
+        <h2 class="section-title">Tout ce qu'il te faut<br><span class="text-gradient">pour progresser</span></h2>
       </div>
-      
-      <div class="activities__grid">
-        <div class="activity-card reveal reveal-delay-1">
-          <div class="activity-card__icon">🏋️</div>
-          <h3 class="activity-card__title">Musculation</h3>
-          <p class="activity-card__description">
-            Espace entièrement dédié à la pratique sur un parc de machines et de matériel récent.
+
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon-wrapper">
+            <span class="service-card__icon">🏋️</span>
+          </div>
+          <h3 class="service-card__title">Musculation</h3>
+          <p class="service-card__desc">
+            600m² de machines et poids libres. Du débutant au confirmé, tout le monde trouve son compte.
           </p>
+          <div class="service-card__features">
+            <span>Machines guidées</span>
+            <span>Poids libres</span>
+            <span>Racks de squat</span>
+          </div>
         </div>
-        
-        <div class="activity-card reveal reveal-delay-2">
-          <div class="activity-card__icon">🫀</div>
-          <h3 class="activity-card__title">Cardio Training</h3>
-          <p class="activity-card__description">
-            Large espace dédié avec rameurs, vélos, elliptiques et tapis de course dernière génération.
+
+        <div class="service-card reveal">
+          <div class="service-card__icon-wrapper">
+            <span class="service-card__icon">🫀</span>
+          </div>
+          <h3 class="service-card__title">Cardio Training</h3>
+          <p class="service-card__desc">
+            Rameurs, vélos, elliptiques et tapis dernière génération pour brûler et performer.
           </p>
+          <div class="service-card__features">
+            <span>Tapis de course</span>
+            <span>Rameurs</span>
+            <span>Vélos elliptiques</span>
+          </div>
         </div>
-        
-        <div class="activity-card reveal reveal-delay-3">
-          <div class="activity-card__icon">⚡</div>
-          <h3 class="activity-card__title">Cross Training</h3>
-          <p class="activity-card__description">
-            Assault bike, ski erg, kettlebells et piste de 20m avec traîneau de puissance.
+
+        <div class="service-card reveal">
+          <div class="service-card__icon-wrapper">
+            <span class="service-card__icon">⚡</span>
+          </div>
+          <h3 class="service-card__title">Cross Training</h3>
+          <p class="service-card__desc">
+            Zone dédiée avec kettlebells, assault bikes, ski erg et piste de 20m.
           </p>
+          <div class="service-card__features">
+            <span>Kettlebells</span>
+            <span>Assault bike</span>
+            <span>Traîneau</span>
+          </div>
         </div>
-        
-        <div class="activity-card reveal reveal-delay-4">
-          <div class="activity-card__icon">👨‍🏫</div>
-          <h3 class="activity-card__title">Coaching</h3>
-          <p class="activity-card__description">
-            Équipe de coachs diplômés à votre disposition pour des programmes personnalisés.
+
+        <div class="service-card reveal">
+          <div class="service-card__icon-wrapper">
+            <span class="service-card__icon">👨‍🏫</span>
+          </div>
+          <h3 class="service-card__title">Coaching Perso</h3>
+          <p class="service-card__desc">
+            Nos coachs diplômés t'accompagnent avec des programmes sur-mesure.
           </p>
+          <div class="service-card__features">
+            <span>Bilan initial</span>
+            <span>Programme perso</span>
+            <span>Suivi régulier</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- History Section -->
-  <section class="history section" id="histoire">
-    <div class="container history__container">
-      <div class="history__content reveal">
-        <span class="history__label">📍 Notre Histoire</span>
-        <h2 class="history__title">L'espace de sport le plus convivial de Lyon</h2>
-        <p class="history__text">
-          Vo2Max est un pilier du monde du sport et de la remise en forme à Lyon. Depuis sa fondation en 1998, ce club a su se positionner en tant qu'acteur local dans l'industrie du fitness en offrant une expérience sportive de qualité supérieure.
-        </p>
-        <p class="history__text">
-          Le club accueille les membres de tous les niveaux, des débutants aux athlètes confirmés. Quelle que soit votre condition physique, vous vous sentirez à l'aise chez Vo2Max.
-        </p>
-        
-        <div class="history__features">
-          <div class="history__feature">
-            <span class="history__feature-icon">✓</span>
-            <span>Ouvert 7 jours sur 7</span>
-          </div>
-          <div class="history__feature">
-            <span class="history__feature-icon">✓</span>
-            <span>Esprit convivial et bienveillant</span>
-          </div>
-          <div class="history__feature">
-            <span class="history__feature-icon">✓</span>
-            <span>Équipements haut de gamme</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="history__image reveal">
-        <img src="./assets/images/gym/dumbbells.jpg" alt="Salle VO2Max Lyon">
-      </div>
+  <!-- Barbell Separator -->
+  <div class="section-separator">
+    <div class="barbell-separator">
+      <div class="barbell-separator__weight"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__bar"></div>
+      <span class="barbell-separator__emoji">💪</span>
+      <div class="barbell-separator__bar"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__weight"></div>
     </div>
-  </section>
+  </div>
 
   <!-- Pricing Section -->
-  <section class="pricing section" id="formules">
+  <section class="pricing section" id="pricing">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-header__label">💰 Nos Formules</span>
-        <h2 class="section-header__title">Simples et sans surprise</h2>
-        <p class="section-header__subtitle">
-          Choisissez la formule qui correspond à vos besoins.
-        </p>
+        <span class="section-tag">💰 Nos Formules</span>
+        <h2 class="section-title">Des tarifs<br><span class="text-gradient">simples et clairs</span></h2>
       </div>
-      
+
       <div class="pricing__grid">
-        <div class="pricing-card reveal reveal-delay-1">
-          <div class="pricing-card__name">Séance Découverte</div>
-          <div class="pricing-card__price">10€</div>
-          <p class="pricing-card__description">
-            Idéal pour découvrir notre salle et nos équipements avant de vous engager.
-          </p>
-          <a href="contact.html" class="btn btn--outline pricing-card__cta">
-            Réserver une séance
-          </a>
+        <div class="pricing-card reveal">
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__name">Découverte</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">10</span>
+              <span class="pricing-card__currency">€</span>
+            </div>
+            <span class="pricing-card__period">la séance</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Accès complet à la salle</li>
+            <li>Découverte des équipements</li>
+            <li>Sans engagement</li>
+          </ul>
+          <a href="#contact" class="btn btn--outline btn--full">Réserver</a>
         </div>
-        
-        <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
-          <div class="pricing-card__name">Formule Classique</div>
-          <div class="pricing-card__price">34,90€<span>/mois</span></div>
-          <p class="pricing-card__description">
-            Sans engagement. Accès illimité à la salle : musculation, cardio et cross-training.
-          </p>
-          <a href="contact.html" class="btn btn--primary pricing-card__cta shine">
-            Choisir cette formule
-          </a>
+
+        <div class="pricing-card pricing-card--featured reveal">
+          <div class="pricing-card__badge">Populaire 🔥</div>
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__name">Classique</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">34</span>
+              <span class="pricing-card__currency">,90€</span>
+            </div>
+            <span class="pricing-card__period">/ mois</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Accès illimité 7j/7</li>
+            <li>Musculation & Cardio</li>
+            <li>Cross-training</li>
+            <li>Sans engagement</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--full">Choisir</a>
         </div>
-        
-        <div class="pricing-card reveal reveal-delay-3">
-          <div class="pricing-card__name">Formule Bilan</div>
-          <div class="pricing-card__price">69,90€</div>
-          <p class="pricing-card__description">
-            Bilan de départ et programme personnalisé + 34,90€/mois sans engagement.
-          </p>
-          <a href="contact.html" class="btn btn--outline pricing-card__cta">
-            Choisir cette formule
-          </a>
+
+        <div class="pricing-card reveal">
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__name">Coaching</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">69</span>
+              <span class="pricing-card__currency">,90€</span>
+            </div>
+            <span class="pricing-card__period">bilan + 34,90€/mois</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Bilan personnalisé</li>
+            <li>Programme sur-mesure</li>
+            <li>Suivi coach dédié</li>
+            <li>Accès illimité</li>
+          </ul>
+          <a href="#contact" class="btn btn--outline btn--full">Réserver</a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Barbell Separator -->
+  <div class="section-separator">
+    <div class="barbell-separator">
+      <div class="barbell-separator__weight"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__bar"></div>
+      <span class="barbell-separator__emoji">🔥</span>
+      <div class="barbell-separator__bar"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__weight"></div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__content reveal">
+          <span class="section-tag">🏠 À Propos</span>
+          <h2 class="section-title">
+            Plus qu'une salle,<br>
+            <span class="text-gradient">une famille</span>
+          </h2>
+          <p class="about__text">
+            Depuis 1998, VO2Max est un pilier du sport à Lyon. On a créé un espace où tout le monde se sent chez soi,
+            que tu sois débutant ou athlète confirmé.
+          </p>
+          <p class="about__text">
+            Notre philosophie ? <strong>T'accompagner dans ta progression</strong> avec bienveillance et exigence.
+            Ici, pas de jugement, juste de la motivation et des résultats.
+          </p>
+
+          <div class="about__values">
+            <div class="about__value">
+              <span class="about__value-icon">🤝</span>
+              <div>
+                <h4>Convivialité</h4>
+                <p>Une ambiance familiale où chacun a sa place</p>
+              </div>
+            </div>
+            <div class="about__value">
+              <span class="about__value-icon">🎯</span>
+              <div>
+                <h4>Résultats</h4>
+                <p>Un accompagnement pro pour atteindre tes objectifs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__visual reveal">
+          <div class="about__image-wrapper">
+            <div class="about__image-content">
+              <span class="about__image-emoji">🏋️‍♂️</span>
+              <span class="about__image-text">600m² d'équipements</span>
+            </div>
+          </div>
+          <div class="about__stats-card">
+            <div class="about__mini-stat">
+              <span class="about__mini-stat-value">25+</span>
+              <span class="about__mini-stat-label">ans d'expérience</span>
+            </div>
+            <div class="about__mini-stat">
+              <span class="about__mini-stat-value">1000+</span>
+              <span class="about__mini-stat-label">membres satisfaits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barbell Separator -->
+  <div class="section-separator">
+    <div class="barbell-separator">
+      <div class="barbell-separator__weight"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__bar"></div>
+      <span class="barbell-separator__emoji">⭐</span>
+      <div class="barbell-separator__bar"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__weight"></div>
+    </div>
+  </div>
 
   <!-- Testimonials Section -->
-  <section class="testimonials section" id="temoignages">
+  <section class="testimonials section" id="testimonials">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-header__label">⭐ Témoignages</span>
-        <h2 class="section-header__title">Ils nous font confiance</h2>
-        <p class="section-header__subtitle">
-          Découvrez les avis de nos membres satisfaits.
-        </p>
+        <span class="section-tag">⭐ Témoignages</span>
+        <h2 class="section-title">Ce qu'ils disent<br><span class="text-gradient">de nous</span></h2>
       </div>
-      
-      <div class="testimonials__slider">
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-card__stars">★★★★★</div>
-          <p class="testimonial-card__content">
-            "Super salle avec un personnel accueillant et des équipements de qualité. Les coachs sont très professionnels et à l'écoute."
+
+      <div class="testimonials__grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Super salle avec un personnel accueillant et des équipements de qualité. Les coachs sont très
+            professionnels !"
           </p>
           <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">S</div>
             <div>
-              <div class="testimonial-card__name">Stephan M.</div>
+              <span class="testimonial-card__name">Stephan M.</span>
+              <span class="testimonial-card__time">Membre depuis 2 ans</span>
             </div>
           </div>
         </div>
-        
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-card__stars">★★★★★</div>
-          <p class="testimonial-card__content">
-            "Ambiance conviviale et matériel au top. J'y vais depuis 2 ans et c'est toujours un plaisir de s'entraîner ici."
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Ambiance conviviale et matériel au top. J'y vais depuis 2 ans et c'est toujours un plaisir !"
           </p>
           <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">J</div>
             <div>
-              <div class="testimonial-card__name">Jean-Baptiste O.</div>
+              <span class="testimonial-card__name">Jean-Baptiste O.</span>
+              <span class="testimonial-card__time">Membre depuis 3 ans</span>
             </div>
           </div>
         </div>
-        
-        <div class="testimonial-card reveal reveal-delay-3">
-          <div class="testimonial-card__stars">★★★★★</div>
-          <p class="testimonial-card__content">
-            "Excellente salle, propre et bien équipée. Les horaires d'ouverture sont parfaits pour moi qui travaille tôt."
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__rating">★★★★★</div>
+          <p class="testimonial-card__text">
+            "Excellente salle, propre et bien équipée. Les horaires sont parfaits pour moi !"
           </p>
           <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">F</div>
             <div>
-              <div class="testimonial-card__name">Filippo C.</div>
+              <span class="testimonial-card__name">Filippo C.</span>
+              <span class="testimonial-card__time">Membre depuis 1 an</span>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="testimonials__cta reveal">
-        <a href="https://www.google.com/search?q=Vo2Max+Evolution+Avis" target="_blank" rel="noopener" class="btn btn--secondary">
-          Voir tous les avis →
+        <a href="https://www.google.com/search?q=Vo2Max+Evolution+Avis" target="_blank" rel="noopener"
+          class="btn btn--ghost">
+          Voir tous les avis Google →
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Advantages Section -->
-  <section class="advantages section" id="avantages">
+  <!-- Barbell Separator -->
+  <div class="section-separator">
+    <div class="barbell-separator">
+      <div class="barbell-separator__weight"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__bar"></div>
+      <span class="barbell-separator__emoji">📍</span>
+      <div class="barbell-separator__bar"></div>
+      <div class="barbell-separator__weight barbell-separator__weight--small"></div>
+      <div class="barbell-separator__weight"></div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact section" id="contact">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="section-header__label">✅ Nos Avantages</span>
-        <h2 class="section-header__title">Votre progression n'a pas de limite</h2>
-      </div>
-      
-      <div class="advantages__grid">
-        <div class="advantage-item reveal reveal-delay-1">
-          <div class="advantage-item__icon">🎓</div>
-          <h3 class="advantage-item__title">Formateurs Certifiés</h3>
-          <p class="advantage-item__description">
-            Des années d'expérience pour vous accompagner dans votre progression.
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <span class="section-tag">📍 Contact</span>
+          <h2 class="section-title">
+            Viens nous<br>
+            <span class="text-gradient">rencontrer</span>
+          </h2>
+          <p class="contact__text">
+            Passe nous voir ou contacte-nous pour toute question. On sera ravis de t'accueillir !
           </p>
-        </div>
-        
-        <div class="advantage-item reveal reveal-delay-2">
-          <div class="advantage-item__icon">📋</div>
-          <h3 class="advantage-item__title">Plans Personnalisés</h3>
-          <p class="advantage-item__description">
-            Des programmes adaptés à vos objectifs et à votre niveau.
-          </p>
-        </div>
-        
-        <div class="advantage-item reveal reveal-delay-3">
-          <div class="advantage-item__icon">🎯</div>
-          <h3 class="advantage-item__title">Tous Niveaux</h3>
-          <p class="advantage-item__description">
-            Une variété de cours pour tous les niveaux de conditionnement physique.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section" id="cta">
-    <div class="cta-section__background"></div>
-    <div class="cta-section__content reveal">
-      <h2 class="cta-section__title">Prêt à commencer votre transformation ?</h2>
-      <p class="cta-section__subtitle">
-        Rejoignez VO2Max Lyon et bénéficiez d'un accompagnement professionnel pour atteindre vos objectifs.
-      </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="contact.html" class="btn btn--secondary btn--lg">
-          S'inscrire maintenant
-        </a>
-        <a href="tel:0437289014" class="btn btn--ghost btn--lg" style="color: white;">
-          📞 04 37 28 90 14
-        </a>
-      </div>
-    </div>
-  </section>
+          <div class="contact__details">
+            <a href="https://maps.google.com/?q=9+Avenue+Leclerc+69007+Lyon" target="_blank" class="contact__item">
+              <span class="contact__item-icon">📍</span>
+              <div>
+                <span class="contact__item-label">Adresse</span>
+                <span class="contact__item-value">9 Avenue Leclerc, 69007 Lyon</span>
+              </div>
+            </a>
 
-  <!-- Instagram Section -->
-  <section class="instagram section" id="instagram">
-    <div class="container">
-      <div class="instagram__header reveal">
-        <div>
-          <span class="section-header__label">📸 Instagram</span>
-          <h2 style="font-size: var(--text-2xl);">Suivez-nous</h2>
+            <a href="tel:0437289014" class="contact__item">
+              <span class="contact__item-icon">📞</span>
+              <div>
+                <span class="contact__item-label">Téléphone</span>
+                <span class="contact__item-value">04 37 28 90 14</span>
+              </div>
+            </a>
+
+            <a href="mailto:contact@vo2max-lyon.com" class="contact__item">
+              <span class="contact__item-icon">✉️</span>
+              <div>
+                <span class="contact__item-label">Email</span>
+                <span class="contact__item-value">contact@vo2max-lyon.com</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="contact__hours">
+            <h4>🕐 Horaires d'ouverture</h4>
+            <div class="contact__hours-grid">
+              <div class="contact__hour">
+                <span>Lun - Ven</span>
+                <span>7h - 22h</span>
+              </div>
+              <div class="contact__hour">
+                <span>Samedi</span>
+                <span>7h - 17h</span>
+              </div>
+              <div class="contact__hour">
+                <span>Dimanche</span>
+                <span>7h - 14h</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="https://www.instagram.com/vo2max_lyon" target="_blank" rel="noopener" class="btn btn--secondary">
-          @vo2max_lyon →
-        </a>
+
+        <div class="contact__form-wrapper reveal">
+          <form class="contact__form" id="contact-form">
+            <h3 class="contact__form-title">🏋️ Réserve ton essai gratuit</h3>
+
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Ton prénom" required>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Ton email" required>
+            </div>
+
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="Ton téléphone">
+            </div>
+
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Ton message (optionnel)" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg">
+              Envoyer ma demande 💪
+            </button>
+
+            <p class="contact__form-note">
+              On te recontacte sous 24h maximum 🔥
+            </p>
+          </form>
+        </div>
       </div>
-      
-      <div class="instagram__grid reveal">
-        <div class="instagram__item">
-          <img src="./assets/images/gym/dumbbells.jpg" alt="VO2Max Instagram">
-          <div class="instagram__item-overlay">
-            <span class="instagram__item-icon">📷</span>
-          </div>
-        </div>
-        <div class="instagram__item">
-          <img src="./assets/images/coaches/coach-1.jpg" alt="VO2Max Instagram">
-          <div class="instagram__item-overlay">
-            <span class="instagram__item-icon">📷</span>
-          </div>
-        </div>
-        <div class="instagram__item">
-          <img src="./assets/images/coaches/coach-2.jpg" alt="VO2Max Instagram">
-          <div class="instagram__item-overlay">
-            <span class="instagram__item-icon">📷</span>
-          </div>
-        </div>
-        <div class="instagram__item">
-          <img src="./assets/images/coaches/coach-3.jpg" alt="VO2Max Instagram">
-          <div class="instagram__item-overlay">
-            <span class="instagram__item-icon">📷</span>
-          </div>
-        </div>
+
+      <!-- Map -->
+      <div class="contact__map reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.4788506968287!2d4.831197315557961!3d45.74639797910548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea5e6d6b8fcd%3A0x8f7b2d5d4e6e6e6e!2s9%20Av.%20Leclerc%2C%2069007%20Lyon!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr"
+          width="100%" height="350" style="border:0; border-radius: 24px;" allowfullscreen="" loading="lazy">
+        </iframe>
       </div>
     </div>
   </section>
@@ -408,94 +576,76 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
+      <div class="footer__main">
         <div class="footer__brand">
-          <div class="footer__logo">
-            <img src="./assets/images/logo.jpg" alt="VO2Max Lyon">
-            <span class="navbar__logo-text">VO2<span style="color: var(--color-accent);">Max</span></span>
-          </div>
-          <p class="footer__description">
-            L'espace de sport le plus convivial défiant toute concurrence sur Lyon ouvert 7j/7 !
+          <a href="#hero" class="footer__logo">
+            <span class="footer__logo-icon">🏋️</span>
+            <span class="footer__logo-text">VO2MAX</span>
+          </a>
+          <p class="footer__tagline">
+            Ta salle de sport familiale à Lyon depuis 1998 💪
           </p>
           <div class="footer__social">
-            <a href="https://www.instagram.com/vo2max_lyon" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
-              📷
-            </a>
-            <a href="https://www.facebook.com/vo2maxlyon" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">
-              📘
-            </a>
+            <a href="https://www.instagram.com/vo2max_lyon" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://www.facebook.com/vo2maxlyon" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
           </div>
         </div>
-        
-        <div class="footer__column">
-          <h4 class="footer__column-title">Navigation</h4>
-          <div class="footer__links">
-            <a href="index.html" class="footer__link">Accueil</a>
-            <a href="services.html" class="footer__link">Services</a>
-            <a href="actualites.html" class="footer__link">Actualités</a>
-            <a href="a-propos.html" class="footer__link">À Propos</a>
-            <a href="contact.html" class="footer__link">Contact</a>
+
+        <div class="footer__links-grid">
+          <div class="footer__column">
+            <h4>Navigation</h4>
+            <a href="#hero">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Tarifs</a>
+            <a href="#about">À Propos</a>
+            <a href="#contact">Contact</a>
           </div>
-        </div>
-        
-        <div class="footer__column">
-          <h4 class="footer__column-title">Horaires</h4>
-          <div class="footer__links">
-            <span class="footer__link">Lun - Ven : 7h - 22h</span>
-            <span class="footer__link">Samedi : 7h - 17h</span>
-            <span class="footer__link">Dimanche : 7h - 14h</span>
+
+          <div class="footer__column">
+            <h4>Horaires</h4>
+            <span>Lun - Ven : 7h - 22h</span>
+            <span>Samedi : 7h - 17h</span>
+            <span>Dimanche : 7h - 14h</span>
           </div>
-        </div>
-        
-        <div class="footer__column">
-          <h4 class="footer__column-title">Contact</h4>
-          <div class="footer__contact-item">
-            <span class="footer__contact-icon">📍</span>
-            <span>9 Av. Leclerc, 69007 Lyon</span>
-          </div>
-          <div class="footer__contact-item">
-            <span class="footer__contact-icon">📞</span>
+
+          <div class="footer__column">
+            <h4>Contact</h4>
             <a href="tel:0437289014">04 37 28 90 14</a>
-          </div>
-          <div class="footer__contact-item">
-            <span class="footer__contact-icon">✉️</span>
             <a href="mailto:contact@vo2max-lyon.com">contact@vo2max-lyon.com</a>
+            <span>9 Av. Leclerc, 69007 Lyon</span>
           </div>
         </div>
       </div>
-      
+
       <div class="footer__bottom">
-        <p class="footer__copyright">
-          © 2024 VO2Max Lyon. Tous droits réservés.
-        </p>
+        <p>© 2024 VO2Max Lyon. Tous droits réservés.</p>
         <div class="footer__legal">
-          <a href="#" class="footer__legal-link">Mentions Légales</a>
-          <a href="#" class="footer__legal-link">Politique de confidentialité</a>
+          <a href="#">Mentions Légales</a>
+          <a href="#">Confidentialité</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- WhatsApp Button -->
-  <a href="https://wa.me/33437289014?text=Bonjour, je souhaite avoir des informations sur VO2Max Lyon." target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Contacter sur WhatsApp">
+  <a href="https://wa.me/33437289014?text=Salut ! Je voudrais des infos sur VO2Max Lyon 💪" target="_blank"
+    rel="noopener" class="whatsapp-btn" aria-label="Contacter sur WhatsApp">
     💬
   </a>
 
   <!-- Back to Top -->
-  <a href="#" class="back-to-top" aria-label="Retour en haut">
-    ↑
-  </a>
+  <a href="#hero" class="back-to-top" aria-label="Retour en haut">↑</a>
 
-  <!-- Scripts -->
+  <!-- Single JS File -->
   <script src="./js/main.js"></script>
-  
+
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SportsActivityLocation",
     "name": "VO2Max Lyon",
-    "description": "Salle de musculation et cardio premium à Lyon depuis 1998",
+    "description": "Salle de musculation familiale et conviviale à Lyon depuis 1998",
     "url": "https://vo2max-lyon.com",
     "telephone": "+33437289014",
     "email": "contact@vo2max-lyon.com",
@@ -536,4 +686,5 @@
   }
   </script>
 </body>
+
 </html>

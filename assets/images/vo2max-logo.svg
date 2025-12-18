@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <defs>
+    <!-- Red accent gradient -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF5252"/>
+      <stop offset="100%" style="stop-color:#E53935"/>
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- VO2 text in white -->
+  <text x="5" y="38" font-family="'Inter', 'Segoe UI', sans-serif" font-size="36" font-weight="800" fill="#FFFFFF" letter-spacing="-1">
+    VO2
+  </text>
+  
+  <!-- MAX text with gradient -->
+  <text x="90" y="38" font-family="'Inter', 'Segoe UI', sans-serif" font-size="36" font-weight="800" fill="url(#accentGradient)" filter="url(#glow)" letter-spacing="-1">
+    MAX
+  </text>
+  
+  <!-- Small dumbbell icon -->
+  <g transform="translate(175, 20)" fill="url(#accentGradient)" opacity="0.8">
+    <rect x="-8" y="-2" width="16" height="4" rx="1"/>
+    <rect x="-12" y="-5" width="5" height="10" rx="1"/>
+    <rect x="7" y="-5" width="5" height="10" rx="1"/>
+  </g>
+</svg>
