@@ -1,15 +1,19 @@
 /* =====================================================
-   VO2MAX LYON - JAVASCRIPT CONSOLIDÉ
+   VO2MAX LYON - JAVASCRIPT CONSOLIDÉ + AMÉLIORATIONS
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     initNavbar();
+    initNavbarScrollSpy();
     initSmoothScroll();
     initScrollReveal();
     initBackToTop();
     initMobileMenu();
     initCounters();
+    initTiltCards();
+    initFloatingLabels();
+    initCtaPulse();
 });
 
 /* ===== Page Loader ===== */
@@ -37,6 +41,39 @@ function initNavbar() {
             navbar.classList.remove('scrolled');
         }
     });
+}
+
+/* ===== Navbar Scroll Spy (Active Link) ===== */
+function initNavbarScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar__link[href^="#"]');
+
+    if (sections.length === 0 || navLinks.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+
+                // Remove active from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Add active to current link
+                const activeLink = document.querySelector(`.navbar__link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
 }
 
 /* ===== Smooth Scroll ===== */
@@ -81,7 +118,6 @@ function initScrollReveal() {
             const elementVisible = 150;
 
             if (elementTop < window.innerHeight - elementVisible) {
-                // Add stagger delay
                 setTimeout(() => {
                     element.classList.add('revealed');
                 }, index * 50);
@@ -90,7 +126,7 @@ function initScrollReveal() {
     };
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+    revealOnScroll();
 }
 
 /* ===== Back to Top Button ===== */
@@ -122,8 +158,8 @@ function initMobileMenu() {
 
     if (!toggle || !nav) return;
 
-    // Create overlay
     const overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
     overlay.style.cssText = `
     position: fixed;
     inset: 0;
@@ -190,11 +226,110 @@ function initCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
+/* ===== 3D Tilt Effect on Cards ===== */
+function initTiltCards() {
+    const cards = document.querySelectorAll('.service-card, .pricing-card, .testimonial-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
+}
+
+/* ===== Floating Labels ===== */
+function initFloatingLabels() {
+    const formGroups = document.querySelectorAll('.form-group');
+
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        if (!input) return;
+
+        // Get placeholder text
+        const placeholder = input.getAttribute('placeholder');
+        if (!placeholder) return;
+
+        // Create floating label
+        const label = document.createElement('label');
+        label.className = 'floating-label';
+        label.textContent = placeholder;
+        label.setAttribute('for', input.id);
+
+        // Add class to input for styling
+        input.classList.add('has-floating-label');
+        input.setAttribute('placeholder', ' '); // Empty placeholder for CSS :placeholder-shown
+
+        // Insert label
+        group.style.position = 'relative';
+        group.appendChild(label);
+
+        // Check if input has value on load
+        if (input.value) {
+            label.classList.add('active');
+        }
+
+        // Focus/blur events
+        input.addEventListener('focus', () => {
+            label.classList.add('active');
+        });
+
+        input.addEventListener('blur', () => {
+            if (!input.value) {
+                label.classList.remove('active');
+            }
+        });
+
+        input.addEventListener('input', () => {
+            if (input.value) {
+                label.classList.add('active');
+            }
+        });
+    });
+}
+
+/* ===== CTA Pulse Animation ===== */
+function initCtaPulse() {
+    const ctaButtons = document.querySelectorAll('.navbar__cta, .hero__ctas .btn--primary');
+
+    ctaButtons.forEach(btn => {
+        // Add pulse class periodically
+        setInterval(() => {
+            btn.classList.add('pulse');
+            setTimeout(() => {
+                btn.classList.remove('pulse');
+            }, 1000);
+        }, 5000);
+    });
+}
+
 /* ===== Form Handling ===== */
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
+
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // Show loading state
+        if (submitBtn) {
+            submitBtn.innerHTML = '<span class="btn-spinner"></span> Envoi...';
+            submitBtn.disabled = true;
+        }
 
         const formData = new FormData(this);
         const name = formData.get('name');
@@ -202,14 +337,30 @@ if (contactForm) {
         const phone = formData.get('phone');
         const message = formData.get('message');
 
-        // Create WhatsApp message
-        const whatsappMessage = `Salut ! Je suis ${name}.%0A%0AEmail: ${email}${phone ? '%0ATél: ' + phone : ''}${message ? '%0A%0AMessage: ' + message : ''}%0A%0AJe voudrais des infos sur VO2Max ! 💪`;
+        // Simulate delay then redirect
+        setTimeout(() => {
+            const whatsappMessage = `Salut ! Je suis ${name}.%0A%0AEmail: ${email}${phone ? '%0ATél: ' + phone : ''}${message ? '%0A%0AMessage: ' + message : ''}%0A%0AJe voudrais des infos sur VO2Max ! 💪`;
 
-        // Redirect to WhatsApp
-        window.open(`https://wa.me/33437289014?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/33437289014?text=${whatsappMessage}`, '_blank');
 
-        // Show success message
-        alert('Super ! On t\'a redirigé vers WhatsApp pour finaliser ta demande 🏋️');
-        this.reset();
+            // Show success state
+            if (submitBtn) {
+                submitBtn.innerHTML = '✓ Envoyé !';
+                submitBtn.classList.add('btn--success');
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('btn--success');
+                }, 3000);
+            }
+
+            this.reset();
+
+            // Reset floating labels
+            document.querySelectorAll('.floating-label').forEach(label => {
+                label.classList.remove('active');
+            });
+        }, 800);
     });
 }
