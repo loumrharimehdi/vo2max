@@ -2651,3 +2651,232 @@ textarea {
     color: white;
     font-weight: 600;
 }
+
+/* =====================================================
+   ENHANCED EFFECTS & NEW FEATURES
+   ===================================================== */
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    width: 0%;
+    z-index: 10001;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* ===== Hero Title Stacked ===== */
+.hero__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    line-height: 0.9;
+}
+
+.hero__title-line {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 12vw, 7rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    animation: titleSlideIn 0.8s ease-out backwards;
+}
+
+.hero__title-line:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.hero__title-line:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.hero__title-line:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes titleSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Hero Stats (Counters) ===== */
+.hero__stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+.hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero__stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: white;
+    line-height: 1;
+}
+
+.hero__stat-unit {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--color-accent);
+}
+
+.hero__stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.25rem;
+}
+
+.hero__stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    align-self: center;
+}
+
+@media (max-width: 600px) {
+    .hero__stats {
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .hero__stat-divider {
+        display: none;
+    }
+}
+
+/* ===== Directions Step Animation ===== */
+.directions__step.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s var(--ease-spring);
+}
+
+.directions__step-number {
+    transition: all 0.4s var(--ease-spring);
+}
+
+.directions__step.animate-in .directions__step-number {
+    animation: numberPop 0.5s var(--ease-spring) 0.3s backwards;
+}
+
+@keyframes numberPop {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ===== Enhanced Marquee ===== */
+.marquee__content {
+    transition: animation-play-state 0.3s ease;
+}
+
+.marquee:hover .marquee__content {
+    animation-play-state: paused;
+}
+
+/* ===== Alternate Marquee (for section separators) ===== */
+.marquee--alt {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 0;
+}
+
+.marquee--alt .marquee__content span {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.marquee--alt .marquee__dot {
+    color: var(--color-accent) !important;
+}
+
+/* Reverse direction for variety */
+.marquee--reverse .marquee__content {
+    animation-direction: reverse;
+}
+
+/* ===== Navbar Sticky CTA ===== */
+.navbar__sticky-cta {
+    animation: ctaPulse 3s ease-in-out infinite;
+}
+
+.navbar__sticky-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(229, 57, 53, 0.5);
+}
+
+/* ===== Parallax Images ===== */
+.about__gallery-main img,
+.about__gallery-grid img {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* ===== Enhanced Card Hover ===== */
+.google-review-card,
+.service-card,
+.pricing-card {
+    transition: all 0.4s var(--ease-spring);
+}
+
+.google-review-card:hover,
+.service-card:hover,
+.pricing-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Button Press Effect ===== */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== Link Underline Animation ===== */
+.navbar__link {
+    position: relative;
+}
+
+.navbar__link::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.navbar__link:hover::before,
+.navbar__link.active::before {
+    width: 100%;
+}

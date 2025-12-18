@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initTiltCards();
     initFloatingLabels();
     initCtaPulse();
+    initScrollProgress();
+    initMarqueePause();
+    initParallax();
+    initDirectionsAnimation();
+    initStickyCTA();
 });
 
 /* ===== Page Loader ===== */
@@ -363,4 +368,171 @@ if (contactForm) {
             });
         }, 800);
     });
+}
+
+/* =====================================================
+   NEW ENHANCED FEATURES
+   ===================================================== */
+
+/* ===== Scroll Progress Bar ===== */
+function initScrollProgress() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+/* ===== Marquee Pause on Hover ===== */
+function initMarqueePause() {
+    const marquees = document.querySelectorAll('.marquee');
+
+    marquees.forEach(marquee => {
+        const content = marquee.querySelector('.marquee__content');
+        if (!content) return;
+
+        marquee.addEventListener('mouseenter', () => {
+            content.style.animationPlayState = 'paused';
+        });
+
+        marquee.addEventListener('mouseleave', () => {
+            content.style.animationPlayState = 'running';
+        });
+    });
+}
+
+/* ===== Parallax Effect ===== */
+function initParallax() {
+    const parallaxElements = document.querySelectorAll('[data-parallax]');
+    const galleryImages = document.querySelectorAll('.about__gallery-main img, .about__gallery-grid img');
+
+    // Add parallax to gallery images
+    galleryImages.forEach(img => {
+        img.setAttribute('data-parallax', '0.1');
+    });
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+
+        document.querySelectorAll('[data-parallax]').forEach(element => {
+            const speed = parseFloat(element.dataset.parallax) || 0.5;
+            const rect = element.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const yPos = (rect.top - window.innerHeight) * speed;
+                element.style.transform = `translateY(${yPos * 0.1}px)`;
+            }
+        });
+    });
+}
+
+/* ===== Directions Steps Animation ===== */
+function initDirectionsAnimation() {
+    const steps = document.querySelectorAll('.directions__step');
+    if (steps.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Stagger the animations
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 200);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    steps.forEach((step, index) => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(30px)';
+        observer.observe(step);
+    });
+}
+
+/* ===== Sticky CTA in Navbar ===== */
+function initStickyCTA() {
+    const navbar = document.querySelector('.navbar');
+    const heroCTA = document.querySelector('.hero__cta-main');
+
+    if (!navbar || !heroCTA) return;
+
+    // Create sticky CTA element
+    const stickyCTA = document.createElement('a');
+    stickyCTA.href = '#contact';
+    stickyCTA.className = 'navbar__sticky-cta';
+    stickyCTA.innerHTML = '🏋️ Essai Gratuit';
+    stickyCTA.style.cssText = `
+        display: none;
+        background: var(--color-accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-left: auto;
+        transition: all 0.3s ease;
+        animation: ctaPulse 3s ease-in-out infinite;
+    `;
+
+    // Insert before the toggle
+    const navContainer = navbar.querySelector('.navbar__container');
+    const toggle = navbar.querySelector('.navbar__toggle');
+    if (navContainer && toggle) {
+        navContainer.insertBefore(stickyCTA, toggle);
+    }
+
+    // Show/hide based on hero CTA visibility
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                stickyCTA.style.display = 'block';
+            } else {
+                stickyCTA.style.display = 'none';
+            }
+        });
+    }, { threshold: 0 });
+
+    observer.observe(heroCTA);
+
+    // Smooth scroll for sticky CTA
+    stickyCTA.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector('#contact');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+}
+
+/* ===== Enhanced Counter Animation with Easing ===== */
+function animateCounterEnhanced(element, target, duration = 2000) {
+    const startTime = performance.now();
+    const startValue = 0;
+
+    function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+    }
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+
+        element.textContent = currentValue;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target;
+        }
+    }
+
+    requestAnimationFrame(update);
 }
